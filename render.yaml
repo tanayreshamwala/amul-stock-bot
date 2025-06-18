@@ -1,0 +1,7 @@
+services:
+  - type: worker
+    name: amul-stock-monitor
+    env: node
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "npm start"
