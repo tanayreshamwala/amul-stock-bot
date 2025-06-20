@@ -21,7 +21,7 @@ async function sendPushNotification(title, body) {
       },
       {
         headers: {
-          AccessToken: PUSHBULLET_TOKEN,
+          Authorization: `Bearer ${PUSHBULLET_TOKEN}`,
           "Content-Type": "application/json",
         },
       }
@@ -43,6 +43,8 @@ async function fetchAndCheckStock() {
         Accept: "application/json",
         Referer: "https://shop.amul.com/en/browse/protein",
         Origin: "https://shop.amul.com",
+        Cookie:
+          "jsessionid=s%3A2TkkTLZKlhj12Wpwfbn4zFyy.knKH%2BJn%2BEpjKPAl8FreuM3eKzKqmNdHev63QVlPJw8U; __cf_bm=M4uKuCg1f6fmvFtjWRo9_LJB55qWHEwMPoRJP9r410Y-1750411768-1.0.1.1-zTKKm7H0eCZ.u_e6RiifBoo7qwfwFE_zr3GJSLY_T3TfgTBFTgLR0wEq5TsEHZLTm72DLuDOZlM18Lv.GNvrCsh0c5GSL_.3xKczg6E.vWk; _ga=GA1.1.1046078225.1750411773; _ga_E69VZ8HPCN=GS2.1.s1750411772$o1$g1$t1750411795$j37$l0$h1481128512",
       },
     });
 
@@ -58,9 +60,9 @@ async function fetchAndCheckStock() {
     let found = false;
 
     for (const product of data) {
-      console.log(
-        `🧾 Product: ${product.name} | ID: ${product._id} | Available: ${product.available}`
-      );
+      // console.log(
+      //   `🧾 Product: ${product.name} | ID: ${product._id} | Available: ${product.available}`
+      // );
 
       if (PRODUCT_IDS.includes(product._id)) {
         if (product.available === 1) {
