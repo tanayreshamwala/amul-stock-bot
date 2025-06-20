@@ -89,4 +89,4 @@ async function fetchAndCheckStock() {
 // Run every 1 min
 console.log("🔁 Amul Stock Bot is starting...\n");
 fetchAndCheckStock();
-setInterval(fetchAndCheckStock, 60 * 1000);
+setInterval(fetchAndCheckStock, 60 * 10000);
